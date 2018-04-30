@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "zend-mvc-plugin-prg\n\n\n\n\n\n\nProvides a \nPost-Redirect-Get\n\ncontroller plugin for \nzend-mvc\n\nversions 3.0 and up.\n\n\n\n\nFile issues at https://github.com/zendframework/zend-mvc-plugin-prg/issues\n\n\nDocumentation is at https://docs.zendframework.com/zend-mvc-plugin-prg/",
+            "title": "zend-mvc-plugin-prg"
+        },
+        {
+            "location": "/#zend-mvc-plugin-prg",
+            "text": "Provides a  Post-Redirect-Get \ncontroller plugin for  zend-mvc \nversions 3.0 and up.   File issues at https://github.com/zendframework/zend-mvc-plugin-prg/issues  Documentation is at https://docs.zendframework.com/zend-mvc-plugin-prg/",
+            "title": "zend-mvc-plugin-prg"
+        }
+    ]
+}
