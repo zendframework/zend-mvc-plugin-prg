@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="zend-mvc-plugin-prg: Post-Redirect-Get controller plugin for zend-mvc">  
+    <meta name="description" content="Post/Redirect/Get plugin for zend-mvc controllers">  
     <link rel="canonical" href="https://docs.zendframework.com/zend-mvc-plugin-prg/">
     <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>zend-mvc-plugin-prg - zend-mvc-plugin-prg - Zend Framework Docs</title>
+    <title>zend-mvc-plugin-prg - Zend Framework Docs</title>
 
     <link rel="stylesheet" href="css/styles-5cfabd53ee.css">
 </head>
@@ -140,11 +140,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href=".">zend-mvc-plugin-prg</a></li>
-
-            
-
-            <li class="active">zend-mvc-plugin-prg</li>
+            <li>zend-mvc-plugin-prg</li>
         
     
 </ol>
@@ -154,12 +150,60 @@
 
 
     <h1>zend-mvc-plugin-prg</h1>
-<p>zend-mvc-plugin-prg: Post-Redirect-Get controller plugin for zend-mvc</p>
+<p>Post/Redirect/Get plugin for zend-mvc controllers</p>
 
 
-    <h2>Installation</h2>
-    <h3>Using Composer</h3>
-    <pre><code class="language-bash">$ composer require zendframework/zend-mvc-plugin-prg</code></pre>
+    <h2 id="installation">Installation</h2>
+<p>Install via composer:</p>
+<p> <pre class=codehilite><code class=language-bash>$ composer require zendframework/zend-mvc-plugin-prg</code></pre></p>
+<p>If you are using the <a href="https://docs.zendframework.com/zend-component-installer/">zend-component-installer</a>,
+you're done!</p>
+<p>If not, you will need to add the component as a module to your
+application. Add the entry <code>'Zend\Mvc\Plugin\Prg'</code> to
+your list of modules in your application configuration (typically
+one of <code>config/application.config.php</code> or <code>config/modules.config.php</code>).</p>
+<h2 id="usage">Usage</h2>
+<p>When a user sends a POST request (e.g. after submitting a form), their
+browser will try to protect them from sending the POST again, breaking
+the back button, causing browser warnings and pop-ups, and sometimes
+reposting the form. Instead, when receiving a POST, we should store the
+data in a session container and redirect the user to a GET request.</p>
+<p>This plugin can be invoked with two arguments:</p>
+<ul>
+<li>
+<p><code>$redirect</code>, a string containing the redirect location,
+  which can either be a named route or a URL, based on the contents of
+  the second parameter.</p>
+</li>
+<li>
+<p><code>$redirectToUrl</code>, a boolean that when set to
+  <code>true</code>, causes the first parameter to be treated as a URL
+  instead of a route name (this is required when redirecting to a URL
+  instead of a route). This argument defaults to <code>false</code>.</p>
+</li>
+</ul>
+<p>When no arguments are provided, the current matched route is used.</p>
+<h3>Example Usage</h3>
+<p> <pre class=codehilite><code class=language-php>// Pass in the route/url you want to redirect to after the POST
+$prg = $this-&gt;prg('/user/register', true);
+
+if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+    // Returned a response to redirect us.
+    return $prg;
+}
+
+if ($prg === false) {
+    // This wasn't a POST request, but there were no params in the flash
+    // messenger; this is probably the first time the form was loaded.
+    return ['form' =&gt; $myForm];
+}
+
+// $prg is an array containing the POST params from the previous request
+$form-&gt;setData($prg);
+
+// ... your form processing code here</code></pre></p>
+
+    
 
 
 <h2>Support</h2>
@@ -175,6 +219,15 @@
 
 
 
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-mvc-plugin-prg/edit/master/docs/book/index.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
 
                 
             <!-- content:end -->
@@ -301,5 +354,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-10-01 20:27:51
+Build Date UTC : 2019-10-19 22:52:24
 -->
