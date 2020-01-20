@@ -2,7 +2,7 @@
 
 > ## Repository abandoned 2019-12-31
 >
-> This repository has moved to laminas/laminas-mvc-plugin-prg.
+> This repository has moved to [laminas/laminas-mvc-plugin-prg](https://github.com/laminas/laminas-mvc-plugin-prg).
 
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-mvc-plugin-prg.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-mvc-plugin-prg)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-mvc-plugin-prg/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-mvc-plugin-prg?branch=master)
